@@ -1,6 +1,23 @@
-<h1>Login %s</h1>
-        
-<form action=\"/login/%s\" method=\"POST\">
-	<textarea name=\"body\">%s</textarea><br>
-    <input type=\"submit\" value=\"Login\">
-</form>"
+<<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<form action="/login/" method="POST">
+		<table>
+			<tr>
+				<td><label>Name:</label></td>
+				<td><input name="user">{{.Login}}</input></td>
+			</tr>
+			<tr>
+				<td><label>Password:</label></td>
+				<td><input name="password">{{.Password}}</input></td>
+			</tr>
+		</table>
+		<div><input type="submit" value="Login"></div>
+		</form>
+	</div>
+</body>
+</html>

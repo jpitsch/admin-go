@@ -1,2 +1,38 @@
-<h1>{{.Name}}</h1>
-<div>{{.Password}}</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View User</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><label>Login:</label></td>
+			<td>{{.Login}}</td>
+		</tr>
+		<tr>
+			<td><label>Password:</label></td>
+			<td>{{.Password}}</td>
+		</tr>
+		<tr>
+			<td><label>First Name:</label></td>
+			<td>{{.Firstname}}</td>
+		</tr>
+		<tr>
+			<td><label>Last Name:</label></td>
+			<td>{{.Lastname}}</td>
+		</tr>
+		<tr>
+			<td><label>Email:</label></td>
+			<td>{{.Email}}</td>
+		</tr>
+		<tr>
+			<td><label>Admin:</label></td>
+			<td>{{.IsAdmin}}</td>
+		</tr>
+		<tr>
+			<td><label>Account Enabled:</label></td>
+			<td>{{.IsDisabled}}</td>
+		</tr>
+	</table>
+</body>
+</html>

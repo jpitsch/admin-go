@@ -1,6 +1,41 @@
-<h1></h1>
-<form action="/save/" method="POST">
-	<div><label>Name:</label><input name="user">{{.Name}}</input></div>
-	<div><label>Password:</label><input name="password">{{.Password}}</input></div>
-	<div><input type="submit" value="Save"></div>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create User</title>
+</head>
+<body>
+	<h1>Create New User</h1>
+	<form action="/save/" method="POST">
+		<table>
+			<tr>
+				<td><label>Login:</label></td>
+				<td><input name="login">{{.Login}}</input></td>
+			</tr>
+			<tr>
+				<td><label>Password:</label></td>
+				<td><input name="password">{{.Password}}</input></td>
+			</tr>
+			<tr>
+				<td><label>First Name:</label></td>
+				<td><input name="firstname">{{.Firstname}}</input></td>
+			</tr>
+			<tr>
+				<td><label>Last Name:</label></td>
+				<td><input name="lastname">{{.Lastname}}</input></td>
+			</tr>
+			<tr>
+				<td><label>Email:</label></td>
+				<td><input name="email">{{.Email}}</input></td>
+			</tr>
+			<tr>
+				<td><label>Admin:</label></td>
+				<td>
+					<input type="radio" name="isadmin" value="true">True</input>
+					<input type="radio" name="isadmin" value="false">False</input>
+				</td>
+			</tr>
+		</table>
+		<div><input type="submit" value="Save"></div>
+	</form>
+</body>
+</html>
