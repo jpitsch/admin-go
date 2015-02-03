@@ -85,6 +85,20 @@ func loadUser(user string, criteria string) User {
 	return userresult
 }
 
+func getAllUsers(w http.ResponseWriter, r *http.Request) {
+	sesson := getSession()
+	defer sesson.Close()
+
+	users := []User{}
+	err := sesson.DB("pitsch_test").C("users").Find(nil).All(&users)
+	if err != nil {
+		fmt.Println("Error trying to retrieve all users")
+	}
+
+	userJson, _ := json.Marshal(users)
+	w.Write(userJson)
+}
+
 //Example of passing reference of the user type
 func saveUser(u User) {
 	session := getSession()
@@ -159,10 +173,6 @@ func SearchUser(q interface{}, skip int, limit int) (searchResults []User, searc
 	return
 }
 
-func GetAllUsers() {
-
-}
-
 func GetUserByLogin(login string, skip int, limit int) (searchResults []User, searchErr string) {
 	searchResults, searchErr = SearchUser(bson.M{"login": bson.RegEx{"^" + login, "i"}}, skip, limit)
 	return
@@ -235,5 +245,6 @@ func main() {
 	http.HandleFunc("/edit/", editUserHandler)
 	http.HandleFunc("/save/", saveUserHandler)
 	http.HandleFunc("/create/", displayCreateUserPageHandler)
+	http.HandleFunc("/getallusers/", getAllUsers)
 	http.ListenAndServe(":8080", nil)
 }
