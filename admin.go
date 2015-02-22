@@ -99,6 +99,26 @@ func getAllUsers(w http.ResponseWriter, r *http.Request) {
 	w.Write(userJson)
 }
 
+func getFakeJson(w http.ResponseWriter, r *http.Request) {
+	u := User{
+		Login:      "JTP",
+		Password:   "2232",
+		Firstname:  "Jason",
+		Lastname:   "Pitsch",
+		Email:      "jason_pitsch@spe.sony.com",
+		IsAdmin:    true,
+		IsDisabled: false}
+
+	res, err := json.Marshal(u)
+
+	if err != nil {
+		fmt.Println("Error trying to create fake JSON response")
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(res)
+}
+
 //Example of passing reference of the user type
 func saveUser(u User) {
 	session := getSession()
@@ -246,5 +266,6 @@ func main() {
 	http.HandleFunc("/save/", saveUserHandler)
 	http.HandleFunc("/create/", displayCreateUserPageHandler)
 	http.HandleFunc("/getallusers/", getAllUsers)
+	http.HandleFunc("/getjsonsample/", getFakeJson)
 	http.ListenAndServe(":8080", nil)
 }
